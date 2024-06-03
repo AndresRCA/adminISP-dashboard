@@ -1,0 +1,41 @@
+<div class="row" [formGroup]="form">
+  <ng-container *ngFor="let formGroup of jsonForm.formGroups; let i=index"><!-- formGroup is the form step AND i is the form group step -->
+
+    <!-- FORM GROUP -->
+    <div [class]="'col-xl-' + (formGroup.styleRules?.width || 12)" [formGroupName]="formGroup.name">
+      <div class="card mg-b-20">
+        <div class="card-header" *ngIf="!formGroup.isFromApiOrigin">{{ formGroup.name | uppercase }}</div>
+        <div class="card-body">
+          <div class="row">
+
+            <ng-container *ngFor="let formControl of formGroup.formControls; let j=index">
+
+              <!-- CONTROL CONTAINER -->
+              <div [class]="'col-lg-' + (formControl.styleRules?.width || 12)">
+                <div class="form-group">
+                  <!-- CONTROL LABEL -->
+                  <label class="form-control-label">
+                    <!-- ICON -->
+                    <ng-container *ngIf="formControl.styleRules?.icon">
+                      <i [class]="formControl.styleRules?.icon"></i>&nbsp;
+                    </ng-container>
+                    <!-- LABEL CONTENT -->
+                    {{ formControl.control.label ? formControl.control.label.toUpperCase() : '&nbsp;' }}
+                    <!-- REQUIRED SYMBOL -->
+                    <span class="tx-danger" *ngIf="formControl.control.attributes?.required"> *</span>
+                  </label>
+                  <!-- CONTROL -->
+                  <app-dynamic-control [parentFormGroup]="getFormGroup(formGroup.name)" [control]="formControl.control"></app-dynamic-control>
+                </div>
+              </div>
+
+            </ng-container>
+
+          </div><!-- row -->
+        </div><!-- card-body -->
+      </div><!-- card -->
+    </div><!-- col-xl-x -->
+    <!-- FORM GROUP -->
+
+  </ng-container>
+</div>

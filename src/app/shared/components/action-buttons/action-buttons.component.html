@@ -1,0 +1,8 @@
+<div class="row d-flex justify-content-center">
+  <button *ngFor="let button of buttons"
+    (click)="employAction(button.action)"
+    [class]="['btn', 'mg-r-10',button.styleRules?.color ? button.styleRules?.color : '']">
+    <i *ngIf="button.styleRules?.icon" [class]="button.styleRules?.icon"></i>
+    {{ button.content | uppercase }}
+  </button>
+</div>

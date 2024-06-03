@@ -1,0 +1,16 @@
+<ng-container *ngFor="let contentBlock of moduleContent">
+  <ng-container [ngSwitch]="contentBlock.type">
+    <!-- regular data forms -->
+    <app-json-form *ngSwitchCase="ContentBlockType.FORM" [jsonForm]="contentBlock.form!"></app-json-form>
+
+    <!-- forms used to search -->
+    <app-filter-form *ngSwitchCase="ContentBlockType.FILTER_FORM" [filterForms]="contentBlock.filterForms"></app-filter-form>
+
+    <!-- action buttons with uses like subtmiting forms, clearing forms, etc -->
+    <app-action-buttons *ngSwitchCase="ContentBlockType.ACTION_BUTTONS" [buttons]="contentBlock.actionButtons"></app-action-buttons>
+
+    <!-- tables returned from the backend -->
+    <!-- <app-tables *ngSwitchCase="ContentBlockType.TABLE" [tables]="contentBlock.tables"></app-tables> -->
+  </ng-container>
+</ng-container>
+<ng-container *ngIf="moduleContent.length === 0">There is no set content for this block.</ng-container>

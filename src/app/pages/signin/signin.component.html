@@ -1,0 +1,25 @@
+<div class="bg-gray-900">
+  <div class="signpanel-wrapper">
+    <div class="signbox">
+      <div class="signbox-header">
+        <h2>AdminISP</h2>
+        <p class="mg-b-0">ISP Admin Dashboard</p>
+      </div><!-- signbox-header -->
+      <div class="signbox-body">
+        <div class="form-group">
+          <label class="form-control-label">Username:</label>
+          <input [(ngModel)]="username" type="text" class="form-control">
+        </div><!-- form-group -->
+        <div class="form-group">
+          <label class="form-control-label">Contraseña:</label>
+          <input [(ngModel)]="password" type="password" class="form-control">
+        </div><!-- form-group -->
+        <div class="form-group">
+          <a href="">Forgot your password?</a>
+        </div><!-- form-group -->
+        <button class="btn btn-success btn-block" (click)="login()">Sign in</button>
+        <div class="tx-center bg-white bd pd-10 mg-t-40">Still don't have an account? <a routerLink='/signup'>Create a new account</a></div>
+      </div><!-- signbox-body -->
+    </div><!-- signbox -->
+  </div><!-- signpanel-wrapper -->
+</div>
